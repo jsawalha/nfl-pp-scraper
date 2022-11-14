@@ -1,0 +1,14 @@
+# Here are the search parameters
+
+urlParams:
+      headers: {"user-agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0"}
+      cookies:
+
+profile_options:
+      # Select the position that you want to scrape from
+      # Options: 
+      # ['running-back', 'quarterback', 'wide-receiver', 'tight-end']
+      pos: 'quarterback'
+
+# Scrape links
+scrape_links: True
