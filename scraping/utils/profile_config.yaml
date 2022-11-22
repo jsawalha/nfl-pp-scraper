@@ -1,6 +1,8 @@
 # Here are the search parameters
 
 urlParams:
+      # Go to https://www.whatismybrowser.com/detect/what-is-my-user-agent/
+      # Copy the user agent blurb, paste it into here
       headers: {"user-agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0"}
       cookies:
 
@@ -8,7 +10,12 @@ profile_options:
       # Select the position that you want to scrape from
       # Options: 
       # ['running-back', 'quarterback', 'wide-receiver', 'tight-end']
-      pos: 'quarterback'
+      pos: 'tight-end'
+      # If True, this will only scrape players that are on the top popularity index rankings
+      # If False, this will scrape all players at a given position
+      pop_index: True
 
 # Scrape links
+# If true, will scrape the website, and replace current .csv file
+# If false, will NOT scrape the website, and load the previous .csv file
 scrape_links: True
