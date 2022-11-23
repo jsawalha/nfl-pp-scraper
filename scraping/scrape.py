@@ -37,7 +37,7 @@ def main():
     page_links = auto_web.getNameLinks(
         pop_index=pop_index, save=True, scrape_links=scrape_link_bool
     )
-
+    
     # Retreive all the car links on a given page
     auto_web.scrapePage(page_list=page_links)
 
