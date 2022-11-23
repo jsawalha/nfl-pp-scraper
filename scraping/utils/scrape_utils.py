@@ -198,9 +198,7 @@ class web_crawler:
             # Title card (top part of the card): Name, position, team.
             card = soup.find(
                 "div",
-                {
-                    "class": "flex flex-col justify-between h-full px-4 pt-4 overflow-hidden"
-                },
+                {"class": "flex-1 md:space-y-1"},
             )
             soup_cmd = [
                 get_text_exist(card, "h1"),
@@ -245,6 +243,7 @@ class web_crawler:
 
             # College stats card: col-dom, col-ypc/ypr, col-tar/sparq, col-sparq
             key_soup = soup.find_all("div", {"class": "flex items-start space-x-1"})
+            key_soup = soup.find("section", {"id": "key-stats"})
             key_card = get_card(key_soup, tag="span")
             key_card = [x for x in key_card if "(" not in x]
             soup_cmd = [convert_to_num(key_card[k]) for k in range(0, 4)]
