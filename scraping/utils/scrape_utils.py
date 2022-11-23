@@ -188,7 +188,7 @@ class web_crawler:
         # Makes empty dictionary from att_list
         att_dict = {item: None for item in list(chain.from_iterable(att_list))}
         # Setting empty array to append all scraped data
-        stats = []
+        stats = list()
 
         # Iterate through each page_list
         for page in tqdm(page_list):
@@ -242,7 +242,6 @@ class web_crawler:
             card_to_dict(att_list[2], soup_cmd, att_dict)
 
             # College stats card: col-dom, col-ypc/ypr, col-tar/sparq, col-sparq
-            key_soup = soup.find_all("div", {"class": "flex items-start space-x-1"})
             key_soup = soup.find("section", {"id": "key-stats"})
             key_card = get_card(key_soup, tag="span")
             key_card = [x for x in key_card if "(" not in x]
@@ -271,7 +270,7 @@ class web_crawler:
             card_to_dict(att_list[4], soup_cmd, att_dict)
 
             # appends all values in the dictionary to an array
-            stats.append(np.array(tuple(att_dict.values())))
+            stats.append(tuple(att_dict.values()))
 
         # Writes the appended array of stats to a pandas dataframe
         df_stats = pd.DataFrame(stats, columns=list(chain.from_iterable(att_list)))
