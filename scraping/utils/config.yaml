@@ -1,4 +1,4 @@
-# Here are the search parameters
+# Configuration parameters for web scraping script
 
 urlParams:
       # Go to https://www.whatismybrowser.com/detect/what-is-my-user-agent/

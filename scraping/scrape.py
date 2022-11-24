@@ -1,8 +1,8 @@
 from utils.scrape_utils import web_crawler
 import yaml
 
-## Call items from carsearch_config.yaml
-with open("utils/profile_config.yaml", "r") as f:
+## Call items from configuration yaml file
+with open("utils/config.yaml", "r") as f:
     try:
         config = yaml.load(f, Loader=yaml.FullLoader)
     except:
