@@ -1,4 +1,2 @@
-utils/__pycache__
+/utils/__pycache__/
 geckodriver.log
-__init__.py
-scraped_data
