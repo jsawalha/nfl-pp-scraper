@@ -1,10 +1,10 @@
 # README for nfl-pp-scrapers
 
-This is a repository for scraping data from the website https://www.playerprofiler.com. You can retreive data from players based on their offensive positions (QB, RB, WR, TE). Running a web scraping script will automatically download and store data in .csv files. Below are the instructions to install and run this project.
+This is a repository for scraping data from the website https://www.playerprofiler.com. You can retreive data from players based on their offensive positions [QB, RB, WR, TE]. Running a web scraping script will automatically download and store data in .csv files. Below are the instructions to install and run this project.
 
 For now, data is being scraped from the following parts of the website:
 
-![Playerprofiler][/images/highlight_image.jpg]
+![Playerprofiler](/images/highlight_image.jpg)
 
 ## Table of Contents
 
