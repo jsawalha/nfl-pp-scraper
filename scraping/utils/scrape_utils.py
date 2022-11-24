@@ -147,8 +147,8 @@ class web_crawler:
             else:
                 name_links = [name["href"] for name in names]
 
-            logging.info(f"retrieved {len(name_links)} players from {self.pos_str}")
-            logging.info(f"User wanted population_index scraping set to: {pop_index}")
+            logging.info(f"Retrieved {len(name_links)} players from {self.pos_str} position")
+            logging.info(f"Population_index set: {pop_index}")
 
             if save:
                 df = pd.DataFrame()
