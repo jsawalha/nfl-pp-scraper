@@ -18,13 +18,18 @@ For now, data is being scraped from the following parts of the website:
 Download this repository using the following code:
 
 ```
-
+git clone https://github.com/jsawalha/nfl-pp-scraper.git
 ```
 
-```sh
-curl -LO http://git.io/Xy0Chg
-git add README.md
-git commit -m "Use README Boilerplate"
+Download the requisite libraries for this repo:
+```
+pip install .
+```
+
+OR
+
+```
+pip install -r requirements.txt
 ```
 
 ## Usage
