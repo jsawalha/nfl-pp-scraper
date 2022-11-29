@@ -10,6 +10,9 @@ For now, data is being scraped from the following parts of the website:
 
 - [Installation](#installation)
 - [Usage](#usage)
+    - Scraping
+    - Preprocessing
+    - Training
 - [Support](#support)
 - [Contributing](#contributing)
 
@@ -34,18 +37,20 @@ pip install -r requirements.txt
 
 ## Usage
 
-Replace the contents of `README.md` with your project's:
+### Scraping
 
-- Name
-- Description
-- Installation instructions
-- Usage instructions
-- Support instructions
-- Contributing instructions
-- Licence
+To run the web scraping script, the command line in the terminal is:
 
-Feel free to remove any sections that aren't applicable to your project.
+```
+python scraping/scrape.py
+```
 
+Customizing your web scraping script is done using the `scraping/utils/config.yaml`. Here, you can do the following:
+- Set the football position that you want to scrape (`running-back`, `quarterback`, `tight-end`, `wide-reciever`)
+- *You can enter in your header user agent* (Might be mandatory for web scraping. Follow instructions inside the `config.yaml` file)
+- Control whether you want to scrape ALL players at a given position, OR just the most popular ones (using `pop_index`)
+
+Once you have set your configuartion, you can run `scrape.py`, and the saved data will be stored in `scraping/scraped_data/`
 ## Support
 
 Please [open an issue](https://github.com/fraction/readme-boilerplate/issues/new) for support.
