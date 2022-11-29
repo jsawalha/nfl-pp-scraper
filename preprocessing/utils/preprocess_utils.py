@@ -5,6 +5,8 @@ import os
 import glob
 import re
 import math
+from pandas.api.types import is_numeric_dtype
+
 
 def load_csv(position):
     if position not in ("quarterback", "wide-receiver", "running-back", "tight-end"):
@@ -27,9 +29,11 @@ def load_csv(position):
 def remove_str(x):
     return int(re.sub('[^0-9]','', x))
 
-def fill_na_zero(col, str_flag = False):
+def fill_na_zero(col, str_flag = False, int_flag = False):
     if str_flag:
         return col.fillna('None', inplace=True)
+    elif int_flag:
+        return col.fillna(-1, inplace=True)
     else:
         return col.fillna('0', inplace=True)
 
@@ -53,4 +57,13 @@ def draft_decimal_check(x):
         return x
 
 
+def convert_multi_nan(pd_col_str, df):
 
+    pd_col = df[pd_col_str]
+    pd_col = pd_col.astype(float)
+
+    for cl in pd_col:
+        if is_numeric_dtype(df[cl]):
+            fill_na_zero(df[cl], int_flag=True)
+        else:
+            raise ValueError("Cannot convert NaN. Column not a float64 or object")

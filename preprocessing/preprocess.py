@@ -13,7 +13,7 @@ def main():
 
     # Cleaning data: Position
     convert_nan('position', df)
-    df['position'].apply(lambda x: remove_str(x))
+    df['position'] = df['position'].apply(lambda x: remove_str(x))
 
     # Team
     df['team'], team_idx = df['team'].factorize()
@@ -23,9 +23,15 @@ def main():
     convert_nan('draft', df)
     df['draft'] = df['draft'].astype(float)
 
-
     # College
     convert_nan('college', df)
+
+    # Others
+    rest_of = ['age', '40-yard', 'speed', 'burst', 'agility', 'bench', 'col-dom',
+                'col-ypr', 'col-breakout', 'col-sparq', 'games-played', 'targets',
+                'rec', 'rec-yards', 'ypr', 'air-yards', 'tds', 'fantasy-ppg']
+
+    convert_multi_nan(rest_of, df)
 
    
 
