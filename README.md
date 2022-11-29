@@ -23,8 +23,8 @@ Download this repository using the following code:
 ```
 git clone https://github.com/jsawalha/nfl-pp-scraper.git
 ```
-
-Download the requisite libraries for this repo:
+OPTIONAL: You can make a new conda environment before installing the following packcages
+Download the requisite libraries for this repo
 ```
 pip install .
 ```
@@ -51,6 +51,7 @@ Customizing your web scraping script is done using the `scraping/utils/config.ya
 - Control whether you want to scrape ALL players at a given position, OR just the most popular ones (using `pop_index`)
 
 Once you have set your configuartion, you can run `scrape.py`, and the saved data will be stored in `scraping/scraped_data/`
+
 ## Support
 
 Please [open an issue](https://github.com/fraction/readme-boilerplate/issues/new) for support.
