@@ -21,9 +21,13 @@ import lxml
 import cchardet
 import time
 
-
-logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
-
+# logger info
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+file_handler = logging.FileHandler('scraping.log')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 class web_crawler:
     """
@@ -98,7 +102,7 @@ class web_crawler:
         """
         req = requests.get(url=url, headers=self.headers, cookies=self.cookies)
         if req.status_code != 200:
-            logging.error("Reqeust code is not [200]. Could not access page")
+            logger.error("Reqeust code is not [200]. Could not access page")
             return None
         soup = BeautifulSoup(req.text, "lxml")
         return soup
@@ -148,15 +152,15 @@ class web_crawler:
             else:
                 name_links = [name["href"] for name in names]
 
-            logging.info(f"Retrieved {len(name_links)} players from {self.pos_str} position")
-            logging.info(f"Population_index set: {pop_index}")
+            logger.info(f"Retrieved {len(name_links)} players from {self.pos_str} position")
+            logger.info(f"Population_index set: {pop_index}")
 
             if save:
                 df = pd.DataFrame()
                 df["saved_links"] = name_links
                 self.check_path_exist(self.LINKS_OUTPATH)
                 df.to_csv(self.link_path, index=False)
-                logging.info(f"Saving page links in {self.LINKS_OUTPATH}")
+                logger.info(f"Saving page links in {self.LINKS_OUTPATH}")
 
             return name_links
 
@@ -165,7 +169,7 @@ class web_crawler:
             try:
                 name_links = pd.read_csv(self.link_path).to_numpy().ravel()
             except:
-                logging.warn("Links for position csv do not exist, scraping now.")
+                logger.warn("Links for position csv do not exist, scraping now.")
                 name_links = self.getNameLinks(
                     pop_index=pop_index, save=True, scrape_links=True
                 )
@@ -287,7 +291,7 @@ class web_crawler:
                 + todays_date
                 + ".csv"
             )
-            logging.info(f"Saving csv... in {OUTPUT}")
+            logger.info(f"Saving csv... in {OUTPUT}")
             df_stats.to_csv(OUTPUT, index=False)
 
         return df_stats

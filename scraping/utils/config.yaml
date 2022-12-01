@@ -10,7 +10,7 @@ profile_options:
       # Select the position that you want to scrape from
       # Options: 
       # ['running-back', 'quarterback', 'wide-receiver', 'tight-end']
-      pos: 'tight-end'
+      pos: 'quarterback'
       # If True, this will only scrape players that are on the top popularity index rankings
       # If False, this will scrape all players at a given position
       pop_index: True
