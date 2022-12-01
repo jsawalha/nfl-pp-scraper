@@ -19,6 +19,7 @@ from tqdm import tqdm
 import time
 import lxml
 import cchardet
+import time
 
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
@@ -99,7 +100,7 @@ class web_crawler:
         if req.status_code != 200:
             logging.error("Reqeust code is not [200]. Could not access page")
             return None
-        soup = BeautifulSoup(req.content, "lxml")
+        soup = BeautifulSoup(req.text, "lxml")
         return soup
 
     def getNameLinks(self, pop_index=True, save=True, scrape_links=True):
