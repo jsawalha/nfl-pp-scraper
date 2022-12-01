@@ -24,10 +24,11 @@ import time
 # logger info
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(message)s')
-file_handler = logging.FileHandler('scraping.log')
+formatter = logging.Formatter("%(asctime)s - %(message)s")
+file_handler = logging.FileHandler("scraping.log")
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+
 
 class web_crawler:
     """
@@ -152,7 +153,9 @@ class web_crawler:
             else:
                 name_links = [name["href"] for name in names]
 
-            logger.info(f"Retrieved {len(name_links)} players from {self.pos_str} position")
+            logger.info(
+                f"Retrieved {len(name_links)} players from {self.pos_str} position"
+            )
             logger.info(f"Population_index set: {pop_index}")
 
             if save:
