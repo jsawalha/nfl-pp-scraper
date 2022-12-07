@@ -2,7 +2,8 @@ import argparse
 from utils.preprocess_utils import *
 
 parser = argparse.ArgumentParser(
-    description="Set parameters for preprocessing pipeline"
+    description="Set parameters for preprocessing pipeline",
+    formatter_class=argparse.ArgumentDefaultsHelpFormatter,
 )
 
 parser.add_argument(
