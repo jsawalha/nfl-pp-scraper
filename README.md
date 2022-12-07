@@ -10,9 +10,9 @@ For now, data is being scraped from the following parts of the website:
 
 - [Installation](#installation)
 - [Usage](#usage)
-    - Scraping
-    - Preprocessing
-    - Training
+    - Scraping (#scraping)
+    - Preprocessing (#preprocessing)
+    - Training (#training)
 - [Support](#support)
 - [Contributing](#contributing)
 
