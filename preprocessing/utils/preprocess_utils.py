@@ -171,11 +171,14 @@ def decimal_check(x):
     instead of the draft position (1.02 (1st round, 2nd pick) vs. 2021).
     We are trying to impute all year values with 0, since we do not know their draft position.
     """
-
-    if float(x).is_integer():
+    try:
+        if float(x).is_integer():
+            return "0"
+        else:
+            return x
+    except:
         return "0"
-    else:
-        return x
+
 
 
 def get_column(col_name, dataframe):
