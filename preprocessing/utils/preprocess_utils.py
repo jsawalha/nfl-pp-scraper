@@ -11,7 +11,7 @@ from pandas.api.types import is_numeric_dtype
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 
 
-def preprocess_data(df=None, position=None):
+def preprocess_data(df=None, position=None, factorize=False):
     """
     Main preprocessing head function. This will sequentially alter all columns. Will convert
     NaN values, change data types, factorize strings, and prepare the dataframe for data analysis
@@ -40,11 +40,6 @@ def preprocess_data(df=None, position=None):
     convert_nan("position", df)
     df["position"] = df["position"].apply(lambda x: remove_str(x))
 
-    # Team
-    df["team"], team_idx = factorize_col(
-        "team", df, sorting=False, save=True, pos=position
-    )
-
     # Draft
     df["draft"] = (
         df["draft"]
@@ -55,11 +50,17 @@ def preprocess_data(df=None, position=None):
     convert_nan("draft", df)
     df["draft"] = df["draft"].astype(float)
 
-    # College
-    convert_nan("college", df)
-    df["college"], col_idx = factorize_col(
-        "college", df, sorting=False, save=True, pos=position
-    )
+    if factorize:
+        # Team
+        df["team"], team_idx = factorize_col(
+            "team", df, sorting=False, save=True, pos=position
+        )
+
+        # College
+        convert_nan("college", df)
+        df["college"], col_idx = factorize_col(
+            "college", df, sorting=False, save=True, pos=position
+        )
 
     # Others (different header column names for each )
     rest_of = df.select_dtypes(include=["float64", "int64"]).columns.tolist()
@@ -178,7 +179,6 @@ def decimal_check(x):
             return x
     except:
         return "0"
-
 
 
 def get_column(col_name, dataframe):
